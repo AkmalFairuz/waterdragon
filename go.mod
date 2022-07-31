@@ -30,3 +30,5 @@ require (
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 )
+
+replace github.com/sandertv/gophertunnel => github.com/akmalfairuz/gophertunnel v1.22.4-0.20220731090658-15fea3b2b870

@@ -348,3 +348,7 @@ func (s *Session) clearScoreboard() {
 
 	s.scoreboards.Clear()
 }
+
+func (s *Session) Handler() Handler {
+	return s.h
+}

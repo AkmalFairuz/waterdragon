@@ -2,6 +2,7 @@ package session
 
 import (
 	"github.com/google/uuid"
+	"strings"
 	"sync"
 )
 
@@ -55,7 +56,7 @@ func (s *Store) Store(x *Session) {
 	defer s.mu.Unlock()
 
 	s.sessions[x.UUID()] = x
-	s.sessionNames[x.Conn().IdentityData().DisplayName] = x
+	s.sessionNames[strings.ToLower(x.Conn().IdentityData().DisplayName)] = x
 }
 
 // Delete deletes a session from the store.
@@ -66,6 +67,6 @@ func (s *Store) Delete(x uuid.UUID) {
 	v, ok := s.sessions[x]
 	if ok {
 		delete(s.sessions, x)
-		delete(s.sessionNames, v.Conn().IdentityData().DisplayName)
+		delete(s.sessionNames, strings.ToLower(v.Conn().IdentityData().DisplayName))
 	}
 }

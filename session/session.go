@@ -111,7 +111,7 @@ func (s *Session) dial(srv *server.Server) (*minecraft.Conn, error) {
 	return minecraft.Dialer{
 		ClientData:   s.conn.ClientData(),
 		IdentityData: i,
-		Protocol:     s.Conn().Protocol(),
+		Protocol:     minecraft.Proto{Id: s.conn.ProtocolID()},
 	}.Dial("raknet", srv.Address())
 }
 

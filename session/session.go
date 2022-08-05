@@ -235,6 +235,8 @@ func (s *Session) Transfer(srv *server.Server) (err error) {
 		s.server = srv
 		s.server.IncrementPlayerCount()
 		s.serverMu.Unlock()
+
+		s.completeTransfer()
 	})
 
 	ctx.Stop(func() {
@@ -355,4 +357,57 @@ func (s *Session) clearScoreboard() {
 
 func (s *Session) Handler() Handler {
 	return s.h
+}
+
+func (s *Session) completeTransfer() {
+	s.serverMu.Lock()
+	gameData := s.tempServerConn.GameData()
+	_ = s.conn.WritePacket(&packet.ChangeDimension{
+		Dimension: packet.DimensionOverworld,
+		Position:  gameData.PlayerPosition,
+	})
+	_ = s.conn.WritePacket(&packet.StopSound{StopAll: true})
+
+	var w sync.WaitGroup
+	w.Add(2)
+	go func() {
+		s.clearEntities()
+		s.clearEffects()
+		w.Done()
+	}()
+	go func() {
+		s.clearPlayerList()
+		s.clearBossBars()
+		s.clearScoreboard()
+		w.Done()
+	}()
+
+	_ = s.conn.WritePacket(&packet.MovePlayer{
+		EntityRuntimeID: s.originalRuntimeID,
+		Position:        gameData.PlayerPosition,
+		Pitch:           gameData.Pitch,
+		Yaw:             gameData.Yaw,
+		Mode:            packet.MoveModeReset,
+	})
+
+	_ = s.conn.WritePacket(&packet.LevelEvent{EventType: packet.LevelEventStopRaining, EventData: 10000})
+	_ = s.conn.WritePacket(&packet.LevelEvent{EventType: packet.LevelEventStopThunderstorm})
+	_ = s.conn.WritePacket(&packet.SetDifficulty{Difficulty: uint32(gameData.Difficulty)})
+	_ = s.conn.WritePacket(&packet.GameRulesChanged{GameRules: gameData.GameRules})
+	_ = s.conn.WritePacket(&packet.SetPlayerGameType{GameType: gameData.PlayerGameMode})
+
+	w.Wait()
+
+	_ = s.serverConn.Close()
+
+	s.serverConn = s.tempServerConn
+	s.tempServerConn = nil
+	s.serverMu.Unlock()
+
+	s.updateTranslatorData(gameData)
+
+	s.transferring.Store(false)
+	s.postTransfer.Store(true)
+
+	s.log.Infof("%s finished transferring to %s", s.Conn().IdentityData().DisplayName, s.Server().Name())
 }

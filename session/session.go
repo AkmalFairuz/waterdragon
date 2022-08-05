@@ -356,3 +356,11 @@ func (s *Session) clearScoreboard() {
 func (s *Session) Handler() Handler {
 	return s.h
 }
+
+func (s *Session) UnsafeConn() *minecraft.Conn {
+	return s.conn
+}
+
+func (s *Session) UnsafeServerConn() *minecraft.Conn {
+	return s.serverConn
+}

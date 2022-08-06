@@ -73,7 +73,7 @@ func handlePackets(s *Session) {
 						s.tempServerConn = nil
 						s.serverMu.Unlock()
 
-						s.updateTranslatorData(gameData)
+						s.translator.updateTranslatorData(gameData)
 
 						s.transferring.Store(false)
 						s.postTransfer.Store(true)

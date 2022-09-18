@@ -33,4 +33,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
 
-replace github.com/sandertv/gophertunnel => github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918054139-ef061a09f0b2
+replace github.com/sandertv/gophertunnel => github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918101655-5a8d093a6a52

@@ -40,6 +40,14 @@ github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918050014-e09e71128081 h1:Qe7
 github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918050014-e09e71128081/go.mod h1:dMOw79FHxr2azEqiGH20AwdljisAN1kqwu5SjPBnZ5k=
 github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918054139-ef061a09f0b2 h1:ksXKrdkDSt2Qrw+5IjcZNRuzkjLPB1GHZ51a1w0ul1Q=
 github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918054139-ef061a09f0b2/go.mod h1:dMOw79FHxr2azEqiGH20AwdljisAN1kqwu5SjPBnZ5k=
+github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918094254-2b774fd5de0c h1:aRbaVVagZSwwmlYSeh/eUJVsLGBB5eTHXgIZxSN1HKA=
+github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918094254-2b774fd5de0c/go.mod h1:dMOw79FHxr2azEqiGH20AwdljisAN1kqwu5SjPBnZ5k=
+github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918095539-e9e19a01fdc9 h1:MqXzm+Yah/XS5xod+zaeBDeN8t1r65tC2NGCXi86x2w=
+github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918095539-e9e19a01fdc9/go.mod h1:dMOw79FHxr2azEqiGH20AwdljisAN1kqwu5SjPBnZ5k=
+github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918101111-ed2d87057a4d h1:omOMDnWdxBy4AkJYP9FIwFzVLFAiBY88EOuqrgCSerE=
+github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918101111-ed2d87057a4d/go.mod h1:dMOw79FHxr2azEqiGH20AwdljisAN1kqwu5SjPBnZ5k=
+github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918101655-5a8d093a6a52 h1:x1IsqM5IlnFjh6el83LWSd2AYZOU0iP0SeamSHmBN94=
+github.com/akmalfairuz/gophertunnel v1.22.4-0.20220918101655-5a8d093a6a52/go.mod h1:dMOw79FHxr2azEqiGH20AwdljisAN1kqwu5SjPBnZ5k=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e/go.mod h1:nSuG5e5PlCu98SY8svDHJxuZscDgtXS6KTTbou5AhLI=
